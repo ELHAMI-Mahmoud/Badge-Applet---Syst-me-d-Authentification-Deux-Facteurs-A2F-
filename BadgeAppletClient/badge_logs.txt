@@ -1,0 +1,50 @@
+2026-01-18 01:10:13 | mahmoud | BADGE_INIT | Badge initialise
+2026-01-18 01:10:48 | SYSTEM | PIN_RESET | PIN reinitialise
+2026-01-18 01:23:38 | Mahmoud EL HAMI | BADGE_INIT | Badge initialise
+2026-01-18 01:24:23 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-18 01:24:36 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-18 01:24:44 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-18 01:24:55 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-18 01:25:02 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-18 01:25:08 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-18 01:25:11 | SYSTEM | PIN_RESET | PIN reinitialise
+2026-01-19 14:06:53 | Mahmoud EL HAMI | BADGE_INIT | Badge initialise
+2026-01-19 14:07:11 | Adam MRANI | BADGE_INIT | Badge initialise
+2026-01-19 14:07:46 | Adam MRANI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:34:32 | Adam MRANI | BADGE_INIT | Badge initialise
+2026-01-19 16:34:58 | Mahmoud EL HAMI | BADGE_INIT | Badge initialise
+2026-01-19 16:35:25 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:35:36 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:35:47 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:36:04 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:36:15 | SYSTEM | PIN_RESET | PIN reinitialise
+2026-01-19 16:55:18 | Adam MRANI | BADGE_INIT | Badge initialise
+2026-01-19 16:56:16 | Mahmoud EL HAMI | BADGE_INIT | Badge initialise
+2026-01-19 16:56:36 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:56:45 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:56:49 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:57:04 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 16:57:17 | SYSTEM | PIN_RESET | PIN reinitialise
+2026-01-19 16:57:29 | Mahmoud EL HAMI | ACCESS_GRANTED | Session: 75118902
+2026-01-19 16:57:38 | Mahmoud EL HAMI | SESSION_CLOSED | Fermee par utilisateur
+2026-01-19 16:57:41 | SYSTEM | PIN_RESET | PIN reinitialise
+2026-01-19 17:00:33 | Adam MRANI | BADGE_INIT | Badge initialise
+2026-01-19 17:00:48 | Mahmoud EL HAMI | BADGE_INIT | Badge initialise
+2026-01-19 17:01:02 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:01:12 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:01:22 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:01:29 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:01:39 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:01:42 | SYSTEM | PIN_RESET | PIN reinitialise
+2026-01-19 17:01:50 | Mahmoud EL HAMI | ACCESS_GRANTED | Session: 68aa5dc8
+2026-01-19 17:02:03 | Mahmoud EL HAMI | SESSION_CLOSED | Fermee par utilisateur
+2026-01-19 17:12:30 | Adam MRANI | BADGE_INIT | Badge initialise
+2026-01-19 17:13:10 | Mahmoud EL HAMI | BADGE_INIT | Badge initialise
+2026-01-19 17:13:31 | Mahmoud EL HAMI | ACCESS_GRANTED | Session: 8802223e
+2026-01-19 17:13:35 | Mahmoud EL HAMI | SESSION_CLOSED | Fermee par utilisateur
+2026-01-19 17:14:15 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:14:20 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:14:28 | Mahmoud EL HAMI | AUTH_FAIL | PIN incorrect
+2026-01-19 17:15:16 | SYSTEM | PIN_RESET | PIN reinitialise
+2026-01-19 17:15:46 | Mahmoud EL HAMI | ACCESS_GRANTED | Session: e59bfab5
+2026-01-19 17:15:47 | Mahmoud EL HAMI | SESSION_CLOSED | Fermee par utilisateur
