@@ -1,0 +1,825 @@
+// converted by version  [v25.1]
+// on Sun Jan 18 00:18:03 WEST 2026
+
+.package my/ensias/badge {
+	.aid 0x20:0x20:0x20:0x20:0x20:0x20;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.9;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.8;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.8;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.applet {
+		0x20:0x20:0x20:0x20:0x20 BadgeApplet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef 0.9 BadgeApplet/pin;
+		// 1
+		instanceFieldRef byte[] BadgeApplet/encryptedKey;
+		// 2
+		instanceFieldRef byte[] BadgeApplet/iv;
+		// 3
+		instanceFieldRef byte[] BadgeApplet/aesKey;
+		// 4
+		instanceFieldRef byte[] BadgeApplet/userId;
+		// 5
+		instanceFieldRef short BadgeApplet/userIdLength;
+		// 6
+		instanceFieldRef boolean BadgeApplet/keyStored;
+		// 7
+		instanceFieldRef 1.20 BadgeApplet/cryptoKey;
+		// 8
+		instanceFieldRef 2.1 BadgeApplet/cipher;
+		// 9
+		instanceFieldRef 1.14 BadgeApplet/random;
+		// 10
+		instanceFieldRef boolean BadgeApplet/pinVerified;
+		// 11
+		instanceFieldRef short BadgeApplet/anomalyFlags;
+		// 12
+		instanceFieldRef byte BadgeApplet/failedPinAttempts;
+		// 13
+		instanceFieldRef byte BadgeApplet/requestCount;
+		// 14
+		instanceFieldRef byte BadgeApplet/lastInstruction;
+		// 15
+		staticMethodRef 1.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	1.14;
+
+		// 16
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 17
+		staticMethodRef 1.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 18
+		.classRef 1.20;		// javacard/security/AESKey
+		// 19
+		.classRef 0.9;		// javacard/framework/OwnerPIN
+		// 20
+		staticMethodRef 2.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	2.1;
+
+		// 21
+		staticMethodRef 0.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 22
+		virtualMethodRef 0.3.1()V;		// register()V
+		// 23
+		.classRef BadgeApplet;
+		// 24
+		staticMethodRef BadgeApplet/<init>([BSB)V;
+		// 25
+		virtualMethodRef 0.9.5()V;		// reset()V
+		// 26
+		staticMethodRef 0.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 27
+		virtualMethodRef 0.3.3()Z;		// selectingApplet()Z
+		// 28
+		virtualMethodRef 0.10.1()[B;		// getBuffer()[B
+		// 29
+		staticMethodRef BadgeApplet/checkRapidRequests(B)V;
+		// 30
+		staticMethodRef BadgeApplet/setPin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 31
+		staticMethodRef BadgeApplet/verifyPin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 32
+		staticMethodRef BadgeApplet/storeEncryptedKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 33
+		staticMethodRef BadgeApplet/getDecryptedKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 34
+		staticMethodRef BadgeApplet/resetPinTries(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 35
+		staticMethodRef BadgeApplet/getUserId(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 36
+		staticMethodRef BadgeApplet/getAnomalyStatus(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 37
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 38
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		// 39
+		virtualMethodRef 0.9.8([BSB)V;		// update([BSB)V
+		// 40
+		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 41
+		staticMethodRef BadgeApplet/deriveAESKey([BSB)V;
+		// 42
+		virtualMethodRef 0.9.1([BSB)Z;		// check([BSB)Z
+		// 43
+		virtualMethodRef 0.9.2()B;		// getTriesRemaining()B
+		// 44
+		virtualMethodRef 1.14.1([BSS)V;		// generateData([BSS)V
+		// 45
+		virtualMethodRef 2.1.4(Ljavacard/security/Key;B[BSS)V;		// init(Ljavacard/security/Key;B[BSS)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 46
+		virtualMethodRef 2.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 47
+		virtualMethodRef 0.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 48
+		virtualMethodRef 0.9.6()V;		// resetAndUnblock()V
+		// 49
+		staticMethodRef BadgeApplet/rotateLeft(BB)B;
+	}
+
+	.class public BadgeApplet 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private 0.9 pin 0;		// Ljavacard/framework/OwnerPIN;
+			private byte[] encryptedKey 1;		// [B
+			private byte[] iv 2;		// [B
+			private byte[] aesKey 3;		// [B
+			private byte[] userId 4;		// [B
+			private 1.20 cryptoKey 5;		// Ljavacard/security/AESKey;
+			private 2.1 cipher 6;		// Ljavacardx/crypto/Cipher;
+			private 1.14 random 7;		// Ljavacard/security/RandomData;
+			private short userIdLength 8;		// S
+			private boolean pinVerified 9;		// Z
+			private boolean keyStored 10;		// Z
+			private short anomalyFlags 11;		// S
+			private byte failedPinAttempts 12;		// B
+			private byte requestCount 13;		// B
+			private byte lastInstruction 14;		// B
+			private static final byte INS_SET_PIN = 16;		// B
+			private static final byte INS_VERIFY_PIN = 32;		// B
+			private static final byte INS_STORE_KEY = 48;		// B
+			private static final byte INS_GET_KEY = 64;		// B
+			private static final byte INS_RESET_TRIES = 80;		// B
+			private static final byte INS_GET_USER_ID = 96;		// B
+			private static final byte INS_GET_ANOMALY = 112;		// B
+			private static final byte PIN_TRY_LIMIT = 3;		// B
+			private static final byte MAX_PIN_SIZE = 8;		// B
+			private static final short KEY_SIZE = 16;		// S
+			private static final short USER_ID_SIZE = 16;		// S
+			private static final short IV_SIZE = 16;		// S
+			private static final byte MAX_FAILED_ATTEMPTS = 5;		// B
+			private static final short ANOMALY_FAILED_PIN = 1;		// S
+			private static final short ANOMALY_BLOCKED_PIN = 2;		// S
+			private static final short ANOMALY_UNAUTHORIZED_GET_KEY = 4;		// S
+			private static final short ANOMALY_WRONG_KEY_SIZE = 8;		// S
+			private static final short ANOMALY_RAPID_REQUESTS = 16;		// S
+			private static final short SW_PIN_VERIFICATION_REQUIRED = 25345;		// S
+			private static final short SW_PIN_TRIES_REMAINING = 25536;		// S
+		}
+
+		.publicMethodTable 4 8 {
+			equals(Ljava/lang/Object;)Z 0;
+			register()V 1;
+			register([BSB)V 2;
+			selectingApplet()Z 3;
+			deselect()V 4;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable; 5;
+			select()Z 6;
+			process(Ljavacard/framework/APDU;)V 7;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method private <init>([BSB)V {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 16;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					new 19;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					bspush 8;
+					invokespecial 21;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putfield_a 0;		// reference my/ensias/badge/BadgeApplet.pin
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 1;		// reference my/ensias/badge/BadgeApplet.encryptedKey
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 2;		// reference my/ensias/badge/BadgeApplet.iv
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 4;		// reference my/ensias/badge/BadgeApplet.userId
+					sconst_0;
+					putfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					sconst_0;
+					putfield_b_this 6;		// boolean my/ensias/badge/BadgeApplet.keyStored
+					aload_0;
+					bspush 15;
+					sspush 128;
+					sconst_0;
+					invokestatic 17;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 18;		// T_CLASSORINTERFACE javacard/security/AESKey
+					putfield_a 7;		// reference my/ensias/badge/BadgeApplet.cryptoKey
+					aload_0;
+					bspush 13;
+					sconst_0;
+					invokestatic 20;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 8;		// reference my/ensias/badge/BadgeApplet.cipher
+					aload_0;
+					sconst_2;
+					invokestatic 15;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putfield_a 9;		// reference my/ensias/badge/BadgeApplet.random
+					sconst_0;
+					putfield_b_this 10;		// boolean my/ensias/badge/BadgeApplet.pinVerified
+					sconst_0;
+					putfield_s_this 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sconst_0;
+					putfield_b_this 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					sconst_0;
+					putfield_b_this 13;		// byte my/ensias/badge/BadgeApplet.requestCount
+					sconst_0;
+					putfield_b_this 14;		// byte my/ensias/badge/BadgeApplet.lastInstruction
+					aload_0;
+					invokevirtual 22;		// register()V
+					return;
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 4;
+			.locals 0;
+
+				L0:	new 23;		// my/ensias/badge/BadgeApplet
+					aload_0;
+					sload_1;
+					sload_2;
+					invokespecial 24;		// my/ensias/badge/BadgeApplet.<init>([BSB)V
+					return;
+		}
+
+		.method public select()Z 6 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sconst_0;
+					putfield_b_this 10;		// boolean my/ensias/badge/BadgeApplet.pinVerified
+					sconst_1;
+					sreturn;
+		}
+
+		.method public deselect()V 4 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference my/ensias/badge/BadgeApplet.pin
+					invokevirtual 25;		// reset()V
+					sconst_0;
+					putfield_b_this 10;		// boolean my/ensias/badge/BadgeApplet.pinVerified
+					getfield_a_this 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					sconst_0;
+					bspush 16;
+					sconst_0;
+					invokestatic 26;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					invokevirtual 27;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 28;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_1;
+					baload;
+					sstore_3;
+				L4:	aload_0;
+					sload_3;
+					invokespecial 29;		// my/ensias/badge/BadgeApplet.checkRapidRequests(B)V
+					sload_3;
+					slookupswitch L12 7 16 L5 32 L6 48 L7 64 L8 80 L9 96 L10 112 L11;
+				L5:	aload_0;
+					aload_1;
+					invokespecial 30;		// my/ensias/badge/BadgeApplet.setPin(Ljavacard/framework/APDU;)V
+					goto L13;
+				L6:	aload_0;
+					aload_1;
+					invokespecial 31;		// my/ensias/badge/BadgeApplet.verifyPin(Ljavacard/framework/APDU;)V
+					goto L13;
+				L7:	aload_0;
+					aload_1;
+					invokespecial 32;		// my/ensias/badge/BadgeApplet.storeEncryptedKey(Ljavacard/framework/APDU;)V
+					goto L13;
+				L8:	aload_0;
+					aload_1;
+					invokespecial 33;		// my/ensias/badge/BadgeApplet.getDecryptedKey(Ljavacard/framework/APDU;)V
+					goto L13;
+				L9:	aload_0;
+					aload_1;
+					invokespecial 34;		// my/ensias/badge/BadgeApplet.resetPinTries(Ljavacard/framework/APDU;)V
+					goto L13;
+				L10:	aload_0;
+					aload_1;
+					invokespecial 35;		// my/ensias/badge/BadgeApplet.getUserId(Ljavacard/framework/APDU;)V
+					goto L13;
+				L11:	aload_0;
+					aload_1;
+					invokespecial 36;		// my/ensias/badge/BadgeApplet.getAnomalyStatus(Ljavacard/framework/APDU;)V
+					goto L13;
+				L12:	sspush 27904;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	return;
+		}
+
+		.method private checkRapidRequests(B)V {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_1;
+					getfield_b_this 14;		// byte my/ensias/badge/BadgeApplet.lastInstruction
+					if_scmpne L3;
+				L1:	aload_0;
+					dup;
+					getfield_b 13;		// byte my/ensias/badge/BadgeApplet.requestCount
+					sconst_1;
+					sadd;
+					s2b;
+					putfield_b 13;		// byte my/ensias/badge/BadgeApplet.requestCount
+					getfield_b_this 13;		// byte my/ensias/badge/BadgeApplet.requestCount
+					sconst_5;
+					if_scmple L4;
+				L2:	aload_0;
+					dup;
+					getfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					bspush 16;
+					sor;
+					putfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					goto L4;
+				L3:	sconst_1;
+					putfield_b_this 13;		// byte my/ensias/badge/BadgeApplet.requestCount
+					sload_1;
+					putfield_b_this 14;		// byte my/ensias/badge/BadgeApplet.lastInstruction
+				L4:	return;
+		}
+
+		.method private setPin(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 28;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokevirtual 38;		// setIncomingAndReceive()S
+					sstore_3;
+				L2:	aload_2;
+					sconst_5;
+					baload;
+					sstore 4;
+				L3:	sload 4;
+					bspush 8;
+					if_scmpgt L5;
+				L4:	sload 4;
+					ifgt L6;
+				L5:	sspush 27264;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	getfield_a_this 0;		// reference my/ensias/badge/BadgeApplet.pin
+					aload_2;
+					bspush 6;
+					sload 4;
+					invokevirtual 39;		// update([BSB)V
+					bspush 6;
+					sload 4;
+					sadd;
+					sstore 5;
+				L7:	aload_0;
+					sload_3;
+					sconst_1;
+					ssub;
+					sload 4;
+					ssub;
+					putfield_s 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					ifle L10;
+				L8:	getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					bspush 16;
+					if_scmpgt L10;
+				L9:	aload_2;
+					sload 5;
+					getfield_a_this 4;		// reference my/ensias/badge/BadgeApplet.userId
+					sconst_0;
+					getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					invokestatic 40;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 4;		// reference my/ensias/badge/BadgeApplet.userId
+					getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					bspush 16;
+					getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					ssub;
+					sconst_0;
+					invokestatic 26;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					goto L11;
+				L10:	sconst_0;
+					putfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					getfield_a_this 4;		// reference my/ensias/badge/BadgeApplet.userId
+					sconst_0;
+					bspush 16;
+					sconst_0;
+					invokestatic 26;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+				L11:	aload_0;
+					aload_2;
+					bspush 6;
+					sload 4;
+					invokespecial 41;		// my/ensias/badge/BadgeApplet.deriveAESKey([BSB)V
+					sconst_0;
+					putfield_b_this 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					return;
+		}
+
+		.method private verifyPin(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 28;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sstore_3;
+				L2:	sload_3;
+					bspush 8;
+					if_scmple L4;
+				L3:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_1;
+					invokevirtual 38;		// setIncomingAndReceive()S
+					pop;
+					getfield_a_this 0;		// reference my/ensias/badge/BadgeApplet.pin
+					aload_2;
+					sconst_5;
+					sload_3;
+					invokevirtual 42;		// check([BSB)Z
+					ifeq L6;
+				L5:	sconst_1;
+					putfield_b_this 10;		// boolean my/ensias/badge/BadgeApplet.pinVerified
+					sconst_0;
+					putfield_b_this 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					goto L12;
+				L6:	sconst_0;
+					putfield_b_this 10;		// boolean my/ensias/badge/BadgeApplet.pinVerified
+					aload_0;
+					dup;
+					getfield_b 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					sconst_1;
+					sadd;
+					s2b;
+					putfield_b 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					getfield_b_this 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					sconst_5;
+					if_scmplt L8;
+				L7:	aload_0;
+					dup;
+					getfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sconst_1;
+					sor;
+					putfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+				L8:	getfield_a_this 0;		// reference my/ensias/badge/BadgeApplet.pin
+					invokevirtual 43;		// getTriesRemaining()B
+					sstore 4;
+				L9:	sload 4;
+					ifne L11;
+				L10:	aload_0;
+					dup;
+					getfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sconst_2;
+					sor;
+					putfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sspush 27011;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+					goto L12;
+				L11:	sspush 25536;
+					sload 4;
+					sor;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L12:	return;
+		}
+
+		.method private storeEncryptedKey(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_b_this 10;		// boolean my/ensias/badge/BadgeApplet.pinVerified
+					ifne L2;
+				L1:	sspush 25345;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	aload_1;
+					invokevirtual 28;		// getBuffer()[B
+					astore_2;
+				L3:	aload_1;
+					invokevirtual 38;		// setIncomingAndReceive()S
+					sstore_3;
+				L4:	sload_3;
+					bspush 16;
+					if_scmpeq L6;
+				L5:	aload_0;
+					dup;
+					getfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					bspush 8;
+					sor;
+					putfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	getfield_a_this 9;		// reference my/ensias/badge/BadgeApplet.random
+					getfield_a_this 2;		// reference my/ensias/badge/BadgeApplet.iv
+					sconst_0;
+					bspush 16;
+					invokevirtual 44;		// generateData([BSS)V
+					getfield_a_this 8;		// reference my/ensias/badge/BadgeApplet.cipher
+					getfield_a_this 7;		// reference my/ensias/badge/BadgeApplet.cryptoKey
+					sconst_2;
+					getfield_a_this 2;		// reference my/ensias/badge/BadgeApplet.iv
+					sconst_0;
+					bspush 16;
+					invokevirtual 45;		// init(Ljavacard/security/Key;B[BSS)V
+					getfield_a_this 8;		// reference my/ensias/badge/BadgeApplet.cipher
+					aload_2;
+					sconst_5;
+					bspush 16;
+					getfield_a_this 1;		// reference my/ensias/badge/BadgeApplet.encryptedKey
+					sconst_0;
+					invokevirtual 46;		// doFinal([BSS[BS)S
+					pop;
+					sconst_1;
+					putfield_b_this 6;		// boolean my/ensias/badge/BadgeApplet.keyStored
+					return;
+		}
+
+		.method private getDecryptedKey(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_b_this 6;		// boolean my/ensias/badge/BadgeApplet.keyStored
+					ifne L2;
+				L1:	sspush 27011;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	getfield_b_this 10;		// boolean my/ensias/badge/BadgeApplet.pinVerified
+					ifne L4;
+				L3:	aload_0;
+					dup;
+					getfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sconst_4;
+					sor;
+					putfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sspush 25345;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_1;
+					invokevirtual 28;		// getBuffer()[B
+					astore_2;
+				L5:	getfield_a_this 8;		// reference my/ensias/badge/BadgeApplet.cipher
+					getfield_a_this 7;		// reference my/ensias/badge/BadgeApplet.cryptoKey
+					sconst_1;
+					getfield_a_this 2;		// reference my/ensias/badge/BadgeApplet.iv
+					sconst_0;
+					bspush 16;
+					invokevirtual 45;		// init(Ljavacard/security/Key;B[BSS)V
+					getfield_a_this 8;		// reference my/ensias/badge/BadgeApplet.cipher
+					getfield_a_this 1;		// reference my/ensias/badge/BadgeApplet.encryptedKey
+					sconst_0;
+					bspush 16;
+					aload_2;
+					sconst_0;
+					invokevirtual 46;		// doFinal([BSS[BS)S
+					pop;
+					aload_1;
+					sconst_0;
+					bspush 16;
+					invokevirtual 47;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private resetPinTries(Ljavacard/framework/APDU;)V {
+			.stack 3;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_a_this 0;		// reference my/ensias/badge/BadgeApplet.pin
+					invokevirtual 48;		// resetAndUnblock()V
+					aload_0;
+					dup;
+					getfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					bspush -3;
+					sand;
+					putfield_s 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sconst_0;
+					putfield_b_this 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					return;
+		}
+
+		.method private getUserId(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 28;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					ifle L3;
+				L2:	getfield_a_this 4;		// reference my/ensias/badge/BadgeApplet.userId
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					invokestatic 40;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					getfield_s_this 5;		// short my/ensias/badge/BadgeApplet.userIdLength
+					invokevirtual 47;		// setOutgoingAndSend(SS)V
+					goto L4;
+				L3:	aload_1;
+					sconst_0;
+					sconst_0;
+					invokevirtual 47;		// setOutgoingAndSend(SS)V
+				L4:	return;
+		}
+
+		.method private getAnomalyStatus(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 28;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_0;
+					getfield_s_this 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					bspush 8;
+					sshr;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					aload_2;
+					sconst_1;
+					getfield_s_this 11;		// short my/ensias/badge/BadgeApplet.anomalyFlags
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					aload_2;
+					sconst_2;
+					getfield_b_this 12;		// byte my/ensias/badge/BadgeApplet.failedPinAttempts
+					bastore;
+					aload_2;
+					sconst_3;
+					getfield_a_this 0;		// reference my/ensias/badge/BadgeApplet.pin
+					invokevirtual 43;		// getTriesRemaining()B
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					aload_1;
+					sconst_0;
+					sconst_4;
+					invokevirtual 47;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private deriveAESKey([BSB)V {
+			.stack 8;
+			.locals 3;
+
+				L0:	getfield_a_this 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					sconst_0;
+					bspush 16;
+					sconst_0;
+					invokestatic 26;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sconst_0;
+					sstore 4;
+				L1:	goto L6;
+				L2:	aload_1;
+					sload_2;
+					sload 4;
+					sadd;
+					baload;
+					sstore 5;
+				L3:	sload 4;
+					bspush 16;
+					srem;
+					sstore 6;
+				L4:	getfield_a_this 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					sload 6;
+					dup2;
+					baload;
+					sload 5;
+					sxor;
+					bastore;
+					getfield_a_this 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					sload 6;
+					aload_0;
+					getfield_a_this 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					sload 6;
+					baload;
+					sload 4;
+					s2i;
+					iconst_1;
+					iadd;
+					bipush 8;
+					irem;
+					i2b;
+					invokespecial 49;		// my/ensias/badge/BadgeApplet.rotateLeft(BB)B
+					bastore;
+				L5:	sinc 4 1;
+				L6:	sload 4;
+					sload_3;
+					if_scmplt L2;
+				L7:	sconst_0;
+					sstore 4;
+				L8:	goto L10;
+				L9:	getfield_a_this 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					sload 4;
+					dup2;
+					baload;
+					sload 4;
+					bspush 85;
+					sadd;
+					s2b;
+					sxor;
+					bastore;
+					sinc 4 1;
+				L10:	sload 4;
+					bspush 16;
+					if_scmplt L9;
+				L11:	getfield_a_this 7;		// reference my/ensias/badge/BadgeApplet.cryptoKey
+					getfield_a_this 3;		// reference my/ensias/badge/BadgeApplet.aesKey
+					sconst_0;
+					invokeinterface 3 18 4;		// javacard/security/AESKey
+					return;
+		}
+
+		.method private rotateLeft(BB)B {
+			.stack 4;
+			.locals 1;
+
+				L0:	sload_1;
+					sspush 255;
+					sand;
+					s2b;
+					sstore_3;
+				L1:	sload_3;
+					sload_2;
+					sshl;
+					sload_3;
+					bspush 8;
+					sload_2;
+					ssub;
+					sshr;
+					sor;
+					sspush 255;
+					sand;
+					s2b;
+					sreturn;
+		}
+
+	}
+
+}
